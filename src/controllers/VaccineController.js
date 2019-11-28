@@ -16,31 +16,33 @@ const get = async (req, res) => {
   return res.json(vaccines);
 };
 
-// const update = async (req, res) => {
-//   try {
-//     const {
-//       body: { id, ...body }
-//     } = req;
-//     await Vaccine.update({ idConsult: id }, body);
-//     return res.sendStatus(200);
-//   } catch (error) {
-//     return res.sendStatus(400);
-//   }
-// };
+const update = async (req, res) => {
+  try {
+    const {
+      body: { id, ...body }
+    } = req;
+    await Vaccine.update({ _id: id }, body);
+    return res.sendStatus(200);
+  } catch (error) {
+    return res.sendStatus(400);
+  }
+};
 
-// const destroy = async (req, res) => {
-//   try {
-//     const {
-//       query: { id }
-//     } = req;
-//     await Vaccine.remove({ idConsult: id });
-//     return res.sendStatus(200);
-//   } catch (error) {
-//     return res.sendStatus(400);
-//   }
-// };
+const destroy = async (req, res) => {
+  try {
+    const {
+      query: { id }
+    } = req;
+    await Vaccine.remove({ _id: id });
+    return res.sendStatus(200);
+  } catch (error) {
+    return res.sendStatus(400);
+  }
+};
 
 module.exports = {
   create,
-  get
+  get,
+  update,
+  destroy
 };
